@@ -1,0 +1,18 @@
+// Load express module
+var express = require('expree');
+var app = express();
+
+// set port: use environment variable PORT if set, else 3000
+var port = process.env.PORT || 3000;
+
+// serve static files from /public
+app.use(express.static(__dirname + '/public'));
+
+// Route for root path
+app.get('/', function(request, response) {
+ response.send('Hello World');
+});
+
+// start server, listen on 0.0.0.0 so Docker can access it externally
+app.listen(port, '0.0.0.0', function() {
+ console.log("Node app is 
